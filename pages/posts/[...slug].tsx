@@ -13,7 +13,6 @@ interface PostPageProps {
 }
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
-  // console.log(post);
   return <PostContent post={post} />;
 };
 
@@ -32,18 +31,6 @@ export const getStaticProps: GetStaticProps = (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const postFileNames = getPostFIles();
-  const slugs = postFileNames.map((fileName) => fileName.replace(/\.md$/, ""));
-  // console.log(slugs);
-
-  const returnedSlugs = slugs.map((slug) => {
-    return {
-      params: {
-        slug: ["title", slug],
-      },
-    };
-  });
-
   return {
     paths: [],
     fallback: "blocking",
